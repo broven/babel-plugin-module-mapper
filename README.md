@@ -1,4 +1,5 @@
 # babel-plugin-module-mapper
+[![Build Status](https://travis-ci.org/broven/babel-plugin-module-mapper.svg?branch=master)](https://travis-ci.org/broven/babel-plugin-module-mapper)
 
 This plugin aim to map particular import to another module.
 
