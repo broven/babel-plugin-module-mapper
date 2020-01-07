@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rewrite to default 1`] = `
+"import { b } from 'origin';
+import c from \\"destModule\\";"
+`;
+
+exports[`simple Usage 1`] = `
+"import { b } from 'origin';
+import { a } from \\"destModule\\";"
+`;
+
+exports[`with local name 1`] = `
+"import { b } from 'origin';
+import { a as c } from \\"destModule\\";"
+`;

@@ -1,0 +1,13 @@
+{
+  "name": "babel-plugin-module-mapper",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "license": "MIT",
+  "scripts": {
+    "test:cov": "jest --coverage"
+  },
+  "dependencies": {
+    "@babel/core": "^7.7.7",
+    "jest": "^24.9.0"
+  }
+}
