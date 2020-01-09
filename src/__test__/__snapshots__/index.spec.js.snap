@@ -1,16 +1,37 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`rewrite to default 1`] = `
+exports[`import only import one 1`] = `"import a from \\"destModule\\";"`;
+
+exports[`import rewrite to default 1`] = `
 "import { b } from 'origin';
 import c from \\"destModule\\";"
 `;
 
-exports[`simple Usage 1`] = `
+exports[`import simple Usage 1`] = `
 "import { b } from 'origin';
 import { a } from \\"destModule\\";"
 `;
 
-exports[`with local name 1`] = `
+exports[`import with local name 1`] = `
 "import { b } from 'origin';
 import { a as c } from \\"destModule\\";"
+`;
+
+exports[`imported import 1`] = `
+"import { b } from 'origin';
+import { a } from \\"destModule\\";
+console.log(a.b);"
+`;
+
+exports[`imported use default import name 1`] = `
+"import { a as originDefault } from \\"destModule\\";
+console.log(originDefault.a);"
+`;
+
+exports[`real world case propTypes 1`] = `
+"import Nerv, { PureComponent } from 'nervjs';
+import PropTypes from \\"prop-types\\";
+let contextTypes = {
+  onClose: PropTypes.func
+};"
 `;

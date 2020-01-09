@@ -36,3 +36,6 @@ import PropTypes from 'prop-types';
 # lis
 
 WTF lis.
+
+# TODO
+- multpile property support
