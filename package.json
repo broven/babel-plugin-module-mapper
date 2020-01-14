@@ -6,7 +6,6 @@
   "scripts": {
     "test": "jest --coverage",
     "prepublish": "npm set registry https://registry.npmjs.org/",
-    "publish": "tnpm run prepublish && np"
   },
   "dependencies": {
     "@babel/core": "^7.7.7",
