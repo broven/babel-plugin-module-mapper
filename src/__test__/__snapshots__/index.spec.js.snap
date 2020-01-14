@@ -44,3 +44,13 @@ let contextTypes = {
   onClose: PropTypes.func
 };"
 `;
+
+exports[`real world case should not throw error 1`] = `
+"import 'weui';
+import React from \\"react\\";
+import PickerGroup from './picker-group';
+import classNames from 'classnames';
+import { TOP, LINE_HEIGHT } from './constant';
+import * as dateHandle from './date';
+import './style/index.scss';"
+`;

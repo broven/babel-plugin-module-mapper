@@ -1,6 +1,7 @@
 const getExportNameFromNodeArr = arr =>
   arr.map(node => {
-    if (node.type === 'ImportDefaultSpecifier') return node.local.name;
+    if (node.type === 'ImportDefaultSpecifier'
+    || node.type === 'ImportNamespaceSpecifier') return node.local.name;
     return node.imported.name;
   });
 const getImportSpecifierLocalName = s => s.local.name;

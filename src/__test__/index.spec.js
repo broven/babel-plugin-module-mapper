@@ -126,4 +126,27 @@ describe('real world case', () => {
     });
     expect(code).toMatchSnapshot();
   });
+  it ('should not throw error', () => {
+    const {code} = babel.transformSync(`
+    import 'weui'
+    import Nerv from 'nervjs'
+    import PickerGroup from './picker-group'
+    import classNames from 'classnames'
+    import { TOP, LINE_HEIGHT } from './constant'
+    import * as dateHandle from './date'
+    import './style/index.scss'
+
+    `, {
+      babelrc: false,
+      plugins: [
+        [plugin, {
+          nervjs: {
+            PropTypes: ['prop-types', 'default'],
+            Nerv: ['react', 'default', 'React'],
+            PureComponent: ['react', 'PureComponent']
+        }}]
+      ]
+    });
+    expect(code).toMatchSnapshot();
+  });
 })

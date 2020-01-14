@@ -1,6 +1,10 @@
 # babel-plugin-module-mapper
 [![Build Status](https://travis-ci.org/broven/babel-plugin-module-mapper.svg?branch=master)](https://travis-ci.org/broven/babel-plugin-module-mapper)
 
+
+# TODO
+- generate only one import when transform to exist import declaretion
+
 This plugin aim to map particular import to another module.
 
 ## demo
@@ -51,5 +55,3 @@ import React from 'preact';
 
 WTF lis.
 
-# TODO
-- multpile property support
