@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "test": "jest --coverage",
-    "prepar": "npm set registry https://registry.npmjs.org/"
+    "prepare": "npm set registry https://registry.npmjs.org/"
   },
   "dependencies": {
     "@babel/core": "^7.7.7",
