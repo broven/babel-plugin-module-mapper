@@ -21,7 +21,7 @@ import PropTypes from 'prop-types';
 
 {
     '${targetModuleName}': {
-        '${targetExport (defaultExport alias to default)}': ['${targetModuleName}', '${targetExportName}']
+        '${targetExport (defaultExport alias to default)}': ['${targetModuleName}', '${targetExportName}', ${targetLocalName?}]
     }
 }
 
@@ -31,6 +31,20 @@ import PropTypes from 'prop-types';
         'PropTypes': ['prop-types', 'default']
     }
 }
+```
+## targetLocalName
+```jsonc
+    {
+     'preact': {
+         'preact': ['preact', 'default', 'React']
+     }
+    }
+```
+transform:
+```javascript
+import preact from 'preact';
+// will transform to:
+import React from 'preact';
 ```
 
 # lis

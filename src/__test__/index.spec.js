@@ -107,4 +107,23 @@ describe('real world case', () => {
     });
     expect(code).toMatchSnapshot();
   });
+  it ('multiple property mapper', () => {
+    const {code} = babel.transformSync(`
+    import Nerv, { PropTypes, PureComponent } from 'nervjs';
+    let contextTypes = {
+      onClose: PropTypes.func
+    };
+    `, {
+      babelrc: false,
+      plugins: [
+        [plugin, {
+          nervjs: {
+            PropTypes: ['prop-types', 'default'],
+            Nerv: ['react', 'default', 'React'],
+            PureComponent: ['react', 'PureComponent']
+        }}]
+      ]
+    });
+    expect(code).toMatchSnapshot();
+  });
 })

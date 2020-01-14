@@ -28,6 +28,15 @@ exports[`imported use default import name 1`] = `
 console.log(originDefault.a);"
 `;
 
+exports[`real world case multiple property mapper 1`] = `
+"import { PureComponent } from \\"react\\";
+import PropTypes from \\"prop-types\\";
+import React from \\"react\\";
+let contextTypes = {
+  onClose: PropTypes.func
+};"
+`;
+
 exports[`real world case propTypes 1`] = `
 "import Nerv, { PureComponent } from 'nervjs';
 import PropTypes from \\"prop-types\\";

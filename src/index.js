@@ -4,7 +4,7 @@ const getExportNameFromNodeArr = arr =>
     return node.imported.name;
   });
 const getImportSpecifierLocalName = s => s.local.name;
-const getInfoFromObject = ({ loc }) => [loc.identifierName];
+// const getInfoFromObject = ({ loc }) => [loc.identifierName];
 
 module.exports = function MapperPlugin({ types: t }) {
   return {
@@ -13,6 +13,7 @@ module.exports = function MapperPlugin({ types: t }) {
         return;
       },
       ImportDeclaration(path, state) {
+        const waitToDeleteSpecifierIndexArr = [];
         // normal case
         // moduleName: node.source.value
         // importValue: node.specifiers[...].local.name
@@ -23,14 +24,14 @@ module.exports = function MapperPlugin({ types: t }) {
         );
         if (!opt.hasOwnProperty(moduleName)) return;
         ExportPropertyArr.forEach((propertyName, index) => {
+          // have config for this property
           if (!opt[moduleName].hasOwnProperty(propertyName)) return;
           // delete this property
-          const localName = getImportSpecifierLocalName(
+          waitToDeleteSpecifierIndexArr.push(index);
+          const defaultLocalName = getImportSpecifierLocalName(
             path.node.specifiers[index]
           );
-          delete path.node.specifiers[index];
-          // add a new import line //TODO: 考虑重复映射的问题， 多个其他property映射到同一个module
-          const [destModuleName, destExportName] = opt[moduleName][
+          const [destModuleName, destExportName, localName = defaultLocalName] = opt[moduleName][
             propertyName
           ];
           // importSpecifier (local, imported)  -> import { imported as local } from 'source'
@@ -44,11 +45,14 @@ module.exports = function MapperPlugin({ types: t }) {
           path.insertAfter(
             t.importDeclaration([specifier], t.StringLiteral(destModuleName))
           );
-          if (path.node.specifiers.length === 1) {
-            path.remove();
-            return;
-          }
         });
+        waitToDeleteSpecifierIndexArr.sort().reverse().forEach(index => {
+          path.node.specifiers.splice(index, 1)
+        });
+        if (path.node.specifiers.length < 1) {
+          path.remove();
+          return;
+        }
       },
       MemberExpression(path, state) {
         // const opt = state.opts;
