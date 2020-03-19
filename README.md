@@ -1,6 +1,8 @@
 # babel-plugin-module-mapper
 [![Build Status](https://travis-ci.org/broven/babel-plugin-module-mapper.svg?branch=master)](https://travis-ci.org/broven/babel-plugin-module-mapper)
 
+![npm](https://img.shields.io/npm/dt/babel-plugin-module-mapper)
+
 
 # TODO
 - generate only one import when transform to exist import declaretion
